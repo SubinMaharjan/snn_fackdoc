@@ -70,7 +70,6 @@ def main():
             dissimilar_pairs.append(float(sim))
             if float(sim) < threshold:
                 cnt_dissimilar_pairs += 1
-        break
 
     with open(os.path.join(write_path, country) + ".csv", 'a') as file:
         writer = csv.writer(file)
