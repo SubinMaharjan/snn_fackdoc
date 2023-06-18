@@ -11,7 +11,7 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 from data_pairs import SiameseNetwork, SiameseNetworkDataset
 import os
-import tqdm.tqdm as tqdm
+from tqdm import tqdm
 
 is_use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if is_use_cuda else "cpu")
