@@ -11,6 +11,7 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 from data_pairs import SiameseNetwork, SiameseNetworkDataset
 import os
+import tqdm.tqdm as tqdm
 
 is_use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if is_use_cuda else "cpu")
@@ -54,7 +55,7 @@ def main():
     test_lbl = []
     threshold = 1.0
 
-    for i, data in enumerate(test_loader, 0):
+    for i, data in tqdm(enumerate(test_loader, 0)):
         img0, img1, label = data
         test_lbl.append(int(label.item()))
         img0, img1, label = img0.to(device), img1.to(device), label.to(device)
