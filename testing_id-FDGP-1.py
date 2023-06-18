@@ -10,6 +10,7 @@ from torch.utils.data import DataLoader
 import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 from data_pairs import SiameseNetwork, SiameseNetworkDataset
+import os
 
 is_use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if is_use_cuda else "cpu")
@@ -29,7 +30,7 @@ def main():
     write_path = args.write_path
     
     # test_set_dir for a country
-    country = 'alb/alb_id'
+    country = 'alb_id'
     # test_set_dir = './data/testing_set/' + country + '/'
     test_set_dir =args.root
     # Load data
