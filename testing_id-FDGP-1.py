@@ -39,7 +39,7 @@ def main():
 
     # Lunch model
     model = SiameseNetwork().to(device)
-    model.load_state_dict(torch.load(model_path + '/' + country + '_net.ckpt', map_location=device), strict=False)
+    model.load_state_dict(torch.load(model_path, map_location=device), strict=False)
     model.eval()
 
     print('-' * 10)
