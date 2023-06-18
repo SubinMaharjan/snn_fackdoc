@@ -30,7 +30,7 @@ def main():
     write_path = args.write_path
     
     # test_set_dir for a country
-    country = 'alb/alb_id'
+    country = 'alb_id'
     # test_set_dir = './data/testing_set/' + country + '/'
     test_set_dir =args.root
     # Load data
