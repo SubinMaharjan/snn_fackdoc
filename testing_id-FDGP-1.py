@@ -21,9 +21,11 @@ def main():
     parser = argparse.ArgumentParser(description='Fraud Detection in Identity Card')
     parser.add_argument('--root', type=str, help='set the root of dataset')
     parser.add_argument('--bs', default=1, type=int, help='batch size')
+    parser.add_argument('--model', default='/models/models', type=str, help='model folder path')
     args = parser.parse_args()
     batch_size = args.bs
-
+    model_path = args.model
+    
     # test_set_dir for a country
     country = 'alb/alb_id'
     # test_set_dir = './data/testing_set/' + country + '/'
@@ -37,7 +39,7 @@ def main():
 
     # Lunch model
     model = SiameseNetwork().to(device)
-    model.load_state_dict(torch.load('./models/' + country + '_net.ckpt', map_location=device), strict=False)
+    model.load_state_dict(torch.load(model_path + '/' + country + '_net.ckpt', map_location=device), strict=False)
     model.eval()
 
     print('-' * 10)
