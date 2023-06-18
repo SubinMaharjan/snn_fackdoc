@@ -22,9 +22,11 @@ def main():
     parser.add_argument('--root', type=str, help='set the root of dataset')
     parser.add_argument('--bs', default=1, type=int, help='batch size')
     parser.add_argument('--model', default='/models/models', type=str, help='model folder path')
+    parser.add_argument('--write_path', default='/kaggle/working/snn_fackdoc/', type=str)
     args = parser.parse_args()
     batch_size = args.bs
     model_path = args.model
+    write_path = args.write_path
     
     # test_set_dir for a country
     country = 'alb/alb_id'
@@ -69,7 +71,7 @@ def main():
                 cnt_dissimilar_pairs += 1
         break
 
-    with open(country + ".csv", 'a') as file:
+    with open(os.path.join(write_path, country) + ".csv", 'a') as file:
         writer = csv.writer(file)
         writer.writerow(similar_pairs)
         writer.writerow(dissimilar_pairs)
@@ -82,7 +84,7 @@ def main():
         fpr_list.append(fpr[item])
     for item in range(len(tpr)):
         tpr_list.append(tpr[item])
-    file = open('ROC_' + country + '.csv', 'a')
+    file = open(write_path + 'ROC_' + country + '.csv', 'a')
     np.savetxt(file, fpr_list, fmt='%1.4f', delimiter=',', newline='\n')
     file.write("\n\n")
     np.savetxt(file, tpr_list, fmt='%1.4f', delimiter=',', newline='\n')
