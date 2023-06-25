@@ -79,8 +79,8 @@ class SiameseNetworkDataset(Dataset):
         img_1 = Image.open(img1_tuple[0])
         img_0 = img_0.convert("L")
         img_1 = img_1.convert("L")
-        print(image0_tuple)
-        print(image1_tuple[1])
+        print(img0_tuple)
+        print(img1_tuple[1])
 
         if self.should_invert:
             img_0 = PIL.ImageOps.invert(img_0)
